@@ -5,7 +5,7 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="header_content">
-                  <h1 class="text-center mt-5">Header</h1>
+                  <p>Footer Content</p>
                 </div>
               </div>
             </div>

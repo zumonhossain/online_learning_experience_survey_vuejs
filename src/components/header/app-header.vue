@@ -4,8 +4,9 @@
           <div class="container">
             <div class="row">
               <div class="col-md-12">
-                <div class="header_content">
-                  <h1 class="text-center mt-5">Header</h1>
+                <div class="header_content text-center">
+                  <h>Web Programming 2</h>
+                  <h2>Hossain Zumon - (M25W7480)</h2>
                 </div>
               </div>
             </div>
