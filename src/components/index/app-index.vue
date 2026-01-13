@@ -15,27 +15,29 @@
                       <div class="col-md-12">
                         <div class="form_item">
                           <label>Full Name <span class="r_star">*</span></label>
-                          <input v-model="formData.name" class="form-control" type="text" placeholder="Hossain Zumon"/>
+                          <input v-model="formData.name" class="form-control" type="text" placeholder="Enter your name"/>
                           <div class="errors_required" v-if="errors.name">{{ errors.name }}</div>
                         </div>
                       </div>
                       <div class="col-md-12">
                         <div class="form_item">
                           <label>Student ID</label>
-                          <input v-model="formData.studentId" class="form-control" type="text" placeholder="M25W7480"/>
+                          <input v-model="formData.studentId" class="form-control" type="text" placeholder="Enter your student id"/>
+                          <div class="errors_required" v-if="errors.studentId">{{ errors.studentId }}</div>
                         </div>
                       </div>
                       <div class="col-md-12">
                         <div class="form_item">
                           <label>Email Address <span class="r_star">*</span></label>
-                          <input v-model="formData.email" class="form-control" type="email" placeholder="zumonhossain100@gmail.com"/>
+                          <input v-model="formData.email" class="form-control" type="email" placeholder="Enter your email"/>
                           <div class="errors_required" v-if="errors.email">{{ errors.email }}</div>
                         </div>
                       </div>
                       <div class="col-md-12">
                         <div class="form_item">
                           <label>Age</label>
-                          <input v-model="formData.age" class="form-control" type="number" placeholder="27"/>
+                          <input v-model="formData.age" class="form-control" type="number" placeholder="Enter your age"/>
+                          <div class="errors_required" v-if="errors.age">{{ errors.age }}</div>
                         </div>
                       </div>
                       <div class="col-md-12">
@@ -47,19 +49,22 @@
                             <option>Female</option>
                             <option>Other</option>
                           </select>
+                          <div class="errors_required" v-if="errors.gender">{{ errors.gender }}</div>
                         </div>
                       </div>
                       <div class="col-md-12">
                         <div class="form_item">
                           <label>Field of Study</label>
-                          <input class="form-control" type="text" v-model="formData.studyField">
+                          <input class="form-control" type="text" v-model="formData.studyField" placeholder="Enter field of study">
+                          <div class="errors_required" v-if="errors.studyField">{{ errors.studyField }}</div>
                         </div>
                       </div>
                       <div class="col-md-12">
                         <div class="form_item">
                           <label>Daily Study Hours</label>
-                          <input type="range" min="1" max="12" v-model="formData.hours">
+                          <input type="range" min="1" max="12" v-model="formData.hours" placeholder="Enter daily study hours">
                           <input class="form-control" type="number" v-model="formData.hours">
+                          <div class="errors_required" v-if="errors.hours">{{ errors.hours }}</div>
                         </div>
                       </div>
                       <div class="col-md-12">
@@ -117,36 +122,42 @@
                         <div class="form_item">
                           <label>Submission Date</label>
                           <input v-model="formData.date" class="form-control" type="date">
+                          <div class="errors_required" v-if="errors.date">{{ errors.date }}</div>
                         </div>
                       </div>
                       <div class="col-md-12">
                         <div class="form_item">
                           <label>Study Mode (Online / Offline / Hybrid)</label>
-                          <input v-model="formData.studyMode" class="form-control" type="text" placeholder="Hybrid">
+                          <input v-model="formData.studyMode" class="form-control" type="text" placeholder="Enter your study mode">
+                          <div class="errors_required" v-if="errors.studyMode">{{ errors.studyMode }}</div>
                         </div>
                       </div>
                       <div class="col-md-12">
                         <div class="form_item">
                           <label>Internet Quality</label>
-                          <input v-model="formData.internetQuality" class="form-control" type="text">
+                          <input v-model="formData.internetQuality" class="form-control" type="text" placeholder="Enter internet quality">
+                          <div class="errors_required" v-if="errors.internetQuality">{{ errors.internetQuality }}</div>
                         </div>
                       </div>
                       <div class="col-md-12">
                         <div class="form_item">
                           <label>Favorite Learning Platform</label>
-                          <input v-model="formData.favoritePlatform" class="form-control" type="text">
+                          <input v-model="formData.favoritePlatform" class="form-control" type="text" placeholder="Enter favorite learning platform">
+                          <div class="errors_required" v-if="errors.favoritePlatform">{{ errors.favoritePlatform }}</div>
                         </div>
                       </div>
                       <div class="col-md-12">
                         <div class="form_item">
                           <label>Future Learning Goal</label>
-                          <input v-model="formData.futureLearningGoal" class="form-control" type="text">
+                          <input v-model="formData.futureLearningGoal" class="form-control" type="text" placeholder="Enter future learning goal">
+                          <div class="errors_required" v-if="errors.futureLearningGoal">{{ errors.futureLearningGoal }}</div>
                         </div>
                       </div>
                       <div class="col-md-12">
                         <div class="form_item">
                           <label>Motivation Level</label>
-                          <input v-model="formData.motivationLevel" class="form-control" type="text">
+                          <input v-model="formData.motivationLevel" class="form-control" type="text" placeholder="Enter motivation level">
+                          <div class="errors_required" v-if="errors.motivationLevel">{{ errors.motivationLevel }}</div>
                         </div>
                       </div>
                       <div class="col-md-12">
@@ -179,7 +190,8 @@
                       <div class="col-md-12">
                         <div class="form_item">
                           <label>Comments</label>
-                          <textarea v-model="comments" class="form-control" style="height: 100px"></textarea>
+                          <textarea v-model="comments" class="form-control" style="height: 100px" placeholder="Enter your comments"></textarea>
+                          <div class="errors_required" v-if="errors.comments">{{ errors.comments }}</div>
                         </div>
                       </div>
                       <div class="col-md-12">
@@ -262,6 +274,46 @@
           this.errors.email = 'Email Address is required.';
         } else if(!/\S+@\S+\.\S+/.test(this.formData.email)){
           this.errors.email = 'Email Address is invalid.';
+        }
+        if(!this.formData.studentId){
+          this.errors.studentId = 'Student ID is required.';
+        }
+        if(!this.formData.age){
+          this.errors.age = 'Age is required.';
+        } else if(this.formData.age <= 0){
+          this.errors.age = 'Age must be a positive number.';
+        }
+        if(!this.formData.gender){
+          this.errors.gender = 'Gender is required.';
+        }
+        if(!this.formData.studyField){
+          this.errors.studyField = 'Study Field is required.';
+        }
+        if(!this.formData.hours){
+          this.errors.hours = 'Hours Per Week is required.';
+        } else if(this.formData.hours <= 0){
+          this.errors.hours = 'Hours Per Week must be a positive number.';
+        }
+        if(!this.formData.date){
+          this.errors.date = 'Date is required.';
+        }
+        if(!this.formData.studyMode){
+          this.errors.studyMode = 'Study Mode is required.';
+        }
+        if(!this.formData.internetQuality){
+          this.errors.internetQuality = 'Internet Quality is required.';
+        }
+        if(!this.formData.favoritePlatform){
+          this.errors.favoritePlatform = 'Favorite Learning Platform is required.';
+        }
+        if(!this.formData.futureLearningGoal){
+          this.errors.futureLearningGoal = 'Future Learning Goal is required.';
+        }
+        if(!this.formData.motivationLevel){
+          this.errors.motivationLevel = 'Motivation Level is required.';
+        }
+        if(!this.comments){
+          this.errors.comments = 'Comments are required.';
         }
       },
       submitForm(){
