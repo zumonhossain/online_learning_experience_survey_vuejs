@@ -26,7 +26,7 @@
                       </div>
                       <div class="col-md-12">
                         <div class="form_item">
-                          <label>Student ID</label>
+                          <label>Student ID <span class="r_star">*</span></label>
                           <input v-model="formData.studentId" class="form-control" type="text" placeholder="Enter your student id"/>
                           <div class="errors_required" v-if="errors.studentId">{{ errors.studentId }}</div>
                         </div>
@@ -40,14 +40,14 @@
                       </div>
                       <div class="col-md-12">
                         <div class="form_item">
-                          <label>Age</label>
+                          <label>Age <span class="r_star">*</span></label>
                           <input v-model="formData.age" class="form-control" type="number" placeholder="Enter your age"/>
                           <div class="errors_required" v-if="errors.age">{{ errors.age }}</div>
                         </div>
                       </div>
                       <div class="col-md-12">
                         <div class="form_item">
-                          <label>Gender</label>
+                          <label>Gender <span class="r_star">*</span></label>
                           <select v-model="formData.gender" class="form-control">
                             <option value="">Select Gender</option>
                             <option>Male</option>
@@ -59,14 +59,14 @@
                       </div>
                       <div class="col-md-12">
                         <div class="form_item">
-                          <label>Field of Study</label>
+                          <label>Field of Study <span class="r_star">*</span></label>
                           <input class="form-control" type="text" v-model="formData.studyField" placeholder="Enter field of study">
                           <div class="errors_required" v-if="errors.studyField">{{ errors.studyField }}</div>
                         </div>
                       </div>
                       <div class="col-md-12">
                         <div class="form_item">
-                          <label>Daily Study Hours</label>
+                          <label>Daily Study Hours <span class="r_star">*</span></label>
                           <input type="range" min="1" max="12" v-model="formData.hours" placeholder="Enter daily study hours">
                           <input class="form-control" type="number" v-model="formData.hours">
                           <div class="errors_required" v-if="errors.hours">{{ errors.hours }}</div>
@@ -74,7 +74,7 @@
                       </div>
                       <div class="col-md-12">
                         <div class="form_item_checkbox">
-                          <label>Preferred Device</label>
+                          <label>Preferred Device <span class="r_star">*</span></label>
                           <div class="form-check">
                             <input value="Computer" v-model="formData.device" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                             <label class="form-check-label" for="flexRadioDefault1">
@@ -91,7 +91,7 @@
                       </div>
                       <div class="col-md-12">
                         <div class="form_item_checkbox">
-                          <label>Online Platforms Used</label>
+                          <label>Online Platforms Used <span class="r_star">*</span></label>
                           <div class="form-check">
                             <input value="Zoom" v-model="platforms" class="form-check-input" type="checkbox" id="flexCheckZoom">
                             <label class="form-check-label" for="flexCheckZoom">
@@ -114,7 +114,7 @@
                       </div>
                       <div class="col-md-12">
                         <div class="form_item_checkbox_notify">
-                          <label>Enable Notifications</label>
+                          <label>Enable Notifications <span class="r_star">*</span></label>
                           <div class="d-flex align-items-center">
                             <div class="form-check form-switch">
                               <input v-model="formData.notify" class="form-check-input" type="checkbox" id="flexSwitchCheckChecked">
@@ -125,49 +125,49 @@
                       </div>
                       <div class="col-md-12">
                         <div class="form_item">
-                          <label>Submission Date</label>
+                          <label>Submission Date <span class="r_star">*</span></label>
                           <input v-model="formData.date" class="form-control" type="date">
                           <div class="errors_required" v-if="errors.date">{{ errors.date }}</div>
                         </div>
                       </div>
                       <div class="col-md-12">
                         <div class="form_item">
-                          <label>Study Mode (Online / Offline / Hybrid)</label>
+                          <label>Study Mode (Online / Offline / Hybrid) <span class="r_star">*</span></label>
                           <input v-model="formData.studyMode" class="form-control" type="text" placeholder="Enter your study mode">
                           <div class="errors_required" v-if="errors.studyMode">{{ errors.studyMode }}</div>
                         </div>
                       </div>
                       <div class="col-md-12">
                         <div class="form_item">
-                          <label>Internet Quality</label>
+                          <label>Internet Quality <span class="r_star">*</span></label>
                           <input v-model="formData.internetQuality" class="form-control" type="text" placeholder="Enter internet quality">
                           <div class="errors_required" v-if="errors.internetQuality">{{ errors.internetQuality }}</div>
                         </div>
                       </div>
                       <div class="col-md-12">
                         <div class="form_item">
-                          <label>Favorite Learning Platform</label>
+                          <label>Favorite Learning Platform <span class="r_star">*</span></label>
                           <input v-model="formData.favoritePlatform" class="form-control" type="text" placeholder="Enter favorite learning platform">
                           <div class="errors_required" v-if="errors.favoritePlatform">{{ errors.favoritePlatform }}</div>
                         </div>
                       </div>
                       <div class="col-md-12">
                         <div class="form_item">
-                          <label>Future Learning Goal</label>
+                          <label>Future Learning Goal <span class="r_star">*</span></label>
                           <input v-model="formData.futureLearningGoal" class="form-control" type="text" placeholder="Enter future learning goal">
                           <div class="errors_required" v-if="errors.futureLearningGoal">{{ errors.futureLearningGoal }}</div>
                         </div>
                       </div>
                       <div class="col-md-12">
                         <div class="form_item">
-                          <label>Motivation Level</label>
+                          <label>Motivation Level <span class="r_star">*</span></label>
                           <input v-model="formData.motivationLevel" class="form-control" type="text" placeholder="Enter motivation level">
                           <div class="errors_required" v-if="errors.motivationLevel">{{ errors.motivationLevel }}</div>
                         </div>
                       </div>
                       <div class="col-md-12">
                         <div class="form_item base_rating">
-                          <label>Overall Satisfaction (Badge Rating)</label>
+                          <label>Overall Satisfaction (Badge Rating) <span class="r_star">*</span></label>
                           <ul>
                             <li>
                               <span @click="ratingSelect('Bronze')" class="bronze">Bronze 🥉</span>
@@ -194,7 +194,7 @@
                       </div>
                       <div class="col-md-12">
                         <div class="form_item">
-                          <label>Comments</label>
+                          <label>Comments <span class="r_star">*</span></label>
                           <textarea v-model="comments" class="form-control" style="height: 100px" placeholder="Enter your comments"></textarea>
                           <div class="errors_required" v-if="errors.comments">{{ errors.comments }}</div>
                         </div>
