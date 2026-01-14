@@ -12,6 +12,7 @@
                   <form action="#">
                     <div class="row">
                       <div class="col-md-12">
+                        <!-- Main Title -->
                         <div class="main_title text-center">
                           <h4>Technology & Online Learning Survey</h4>
                         </div>
@@ -269,6 +270,7 @@
       ratingSelect(rating){
         this.formData.rating = rating;  
       },
+      // form validation
       validateForm(){
         this.errors = {};
         if(!this.formData.name){
@@ -320,6 +322,7 @@
           this.errors.comments = 'Comments are required.';
         }
       },
+      // submit form
       submitForm(){
       this.validateForm();
 
@@ -331,6 +334,7 @@
 
       this.isSubmiTted = true;
 
+      // json output show
       this.formData.jsonOutput = `
         Full Name : ${this.formData.name}
         Student ID : ${this.formData.studentId}
@@ -351,6 +355,7 @@
         Comments : ${this.comments || ''}
         `+ (this.platforms.length ? `Online Platforms Used : ${this.platforms.join(', ')}` : 'Online Platforms Used : None');
       },
+      // clear form
       clearForm(){
         this.formData = {
           name: '',
