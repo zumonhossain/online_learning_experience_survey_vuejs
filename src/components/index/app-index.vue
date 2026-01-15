@@ -237,96 +237,118 @@
 </template>
 
 <script>
-  export default {
-    name: 'AppIndex',
-    data(){
-      return {
-        formData: {
-          name: '',
-          studentId: '',
-          email: '',
-          age: '',
-          gender: '',
-          date: '',
-          device: '',
-          notify: false,
-          hours: 1,
-          studyField: '',
-          studyMode: '',
-          internetQuality: '',
-          favoritePlatform: '',
-          futureLearningGoal: '',
-          motivationLevel: '',
-          rating: '',
-          jsonOutput: ''
-        },
-        comments: '',
-        platforms: [],
-        isSubmiTted: false,
-        errors: {}
+export default {
+  name: 'AppIndex',
+
+  data() {
+    return {
+      formData: {
+        name: '',
+        studentId: '',
+        email: '',
+        age: '',
+        gender: '',
+        date: '',
+        device: '',
+        notify: false,
+        hours: 1,
+        studyField: '',
+        studyMode: '',
+        internetQuality: '',
+        favoritePlatform: '',
+        futureLearningGoal: '',
+        motivationLevel: '',
+        rating: '',
+        jsonOutput: ''
+      },
+      comments: '',
+      platforms: [],
+      isSubmiTted: false,
+      errors: {}
+    }
+  },
+
+  methods: {
+
+    // rating select
+    ratingSelect(rating) {
+      this.formData.rating = rating;
+    },
+
+    // ======================
+    // FORM VALIDATION
+    // ======================
+    validateForm() {
+      this.errors = {};
+
+      if (!this.formData.name) {
+        this.errors.name = 'Full Name is required.';
+      }
+
+      if (!this.formData.studentId) {
+        this.errors.studentId = 'Student ID is required.';
+      }
+
+      if (!this.formData.email) {
+        this.errors.email = 'Email Address is required.';
+      } else if (!/\S+@\S+\.\S+/.test(this.formData.email)) {
+        this.errors.email = 'Email Address is invalid.';
+      }
+
+      if (!this.formData.age) {
+        this.errors.age = 'Age is required.';
+      } else if (this.formData.age <= 0) {
+        this.errors.age = 'Age must be a positive number.';
+      }
+
+      if (!this.formData.gender) {
+        this.errors.gender = 'Gender is required.';
+      }
+
+      if (!this.formData.studyField) {
+        this.errors.studyField = 'Field of Study is required.';
+      }
+
+      if (!this.formData.hours || this.formData.hours <= 0) {
+        this.errors.hours = 'Daily Study Hours must be greater than 0.';
+      }
+
+      if (!this.formData.date) {
+        this.errors.date = 'Submission Date is required.';
+      }
+
+      if (!this.formData.studyMode) {
+        this.errors.studyMode = 'Study Mode is required.';
+      }
+
+      if (!this.formData.internetQuality) {
+        this.errors.internetQuality = 'Internet Quality is required.';
+      }
+
+      if (!this.formData.favoritePlatform) {
+        this.errors.favoritePlatform = 'Favorite Learning Platform is required.';
+      }
+
+      if (!this.formData.futureLearningGoal) {
+        this.errors.futureLearningGoal = 'Future Learning Goal is required.';
+      }
+
+      if (!this.formData.motivationLevel) {
+        this.errors.motivationLevel = 'Motivation Level is required.';
+      }
+
+      if (!this.comments) {
+        this.errors.comments = 'Comments are required.';
       }
     },
-    methods: { 
-      ratingSelect(rating){
-        this.formData.rating = rating;  
-      },
-      // form validation
-      validateForm(){
-        this.errors = {};
-        if(!this.formData.name){
-          this.errors.name = 'Full Name is required.';
-        }
-        if(!this.formData.email){
-          this.errors.email = 'Email Address is required.';
-        } else if(!/\S+@\S+\.\S+/.test(this.formData.email)){
-          this.errors.email = 'Email Address is invalid.';
-        }
-        if(!this.formData.studentId){
-          this.errors.studentId = 'Student ID is required.';
-        }
-        if(!this.formData.age){
-          this.errors.age = 'Age is required.';
-        } else if(this.formData.age <= 0){
-          this.errors.age = 'Age must be a positive number.';
-        }
-        if(!this.formData.gender){
-          this.errors.gender = 'Gender is required.';
-        }
-        if(!this.formData.studyField){
-          this.errors.studyField = 'Study Field is required.';
-        }
-        if(!this.formData.hours){
-          this.errors.hours = 'Hours Per Week is required.';
-        } else if(this.formData.hours <= 0){
-          this.errors.hours = 'Hours Per Week must be a positive number.';
-        }
-        if(!this.formData.date){
-          this.errors.date = 'Date is required.';
-        }
-        if(!this.formData.studyMode){
-          this.errors.studyMode = 'Study Mode is required.';
-        }
-        if(!this.formData.internetQuality){
-          this.errors.internetQuality = 'Internet Quality is required.';
-        }
-        if(!this.formData.favoritePlatform){
-          this.errors.favoritePlatform = 'Favorite Learning Platform is required.';
-        }
-        if(!this.formData.futureLearningGoal){
-          this.errors.futureLearningGoal = 'Future Learning Goal is required.';
-        }
-        if(!this.formData.motivationLevel){
-          this.errors.motivationLevel = 'Motivation Level is required.';
-        }
-        if(!this.comments){
-          this.errors.comments = 'Comments are required.';
-        }
-      },
-      // submit form
-      submitForm(){
+
+    // ======================
+    // SUBMIT FORM
+    // ======================
+    submitForm() {
       this.validateForm();
 
-      if(Object.keys(this.errors).length > 0){
+      if (Object.keys(this.errors).length > 0) {
         this.isSubmiTted = false;
         this.formData.jsonOutput = '';
         return;
@@ -334,55 +356,65 @@
 
       this.isSubmiTted = true;
 
-      // json output show
-      this.formData.jsonOutput = `
-        Full Name : ${this.formData.name}
-        Student ID : ${this.formData.studentId}
-        Email Address : ${this.formData.email}
-        Age : ${this.formData.age}
-        Gender : ${this.formData.gender}
-        Date : ${this.formData.date}
-        Device : ${this.formData.device}
-        Notify Me : ${this.formData.notify ? 'Yes' : 'No'}
-        Hours Per Week : ${this.formData.hours}
-        Study Field : ${this.formData.studyField}
-        Study Mode : ${this.formData.studyMode}
-        Internet Quality : ${this.formData.internetQuality}
-        Favorite Learning Platform : ${this.formData.favoritePlatform}
-        Future Learning Goal : ${this.formData.futureLearningGoal}
-        Motivation Level : ${this.formData.motivationLevel}
-        Rating : ${this.formData.rating}
-        Comments : ${this.comments || ''}
-        `+ (this.platforms.length ? `Online Platforms Used : ${this.platforms.join(', ')}` : 'Online Platforms Used : None');
-      },
-      // clear form
-      clearForm(){
-        this.formData = {
-          name: '',
-          studentId: '',
-          email: '',
-          age: '',
-          gender: '',
-          date: '',
-          device: '',
-          notify: false,
-          hours: 1,
-          studyField: '',
-          studyMode: '',
-          internetQuality: '',
-          favoritePlatform: '',
-          futureLearningGoal: '',
-          motivationLevel: '',
-          rating: '',
-        },
-        this.comments = '';
-        this.platforms = [];
-        this.isSubmiTted = false;
-        this.errors = {};
-      }
+      // JSON OUTPUT OBJECT
+      const outputData = {
+        fullName: this.formData.name,
+        studentId: this.formData.studentId,
+        email: this.formData.email,
+        age: this.formData.age,
+        gender: this.formData.gender,
+        submissionDate: this.formData.date,
+        preferredDevice: this.formData.device,
+        notificationsEnabled: this.formData.notify,
+        dailyStudyHours: this.formData.hours,
+        fieldOfStudy: this.formData.studyField,
+        studyMode: this.formData.studyMode,
+        internetQuality: this.formData.internetQuality,
+        favoriteLearningPlatform: this.formData.favoritePlatform,
+        futureLearningGoal: this.formData.futureLearningGoal,
+        motivationLevel: this.formData.motivationLevel,
+        satisfactionRating: this.formData.rating,
+        onlinePlatformsUsed: this.platforms.length ? this.platforms : [],
+        comments: this.comments
+      };
+
+      // Pretty JSON string
+      this.formData.jsonOutput = JSON.stringify(outputData, null, 2);
+    },
+
+    // ======================
+    // CLEAR FORM
+    // ======================
+    clearForm() {
+      this.formData = {
+        name: '',
+        studentId: '',
+        email: '',
+        age: '',
+        gender: '',
+        date: '',
+        device: '',
+        notify: false,
+        hours: 1,
+        studyField: '',
+        studyMode: '',
+        internetQuality: '',
+        favoritePlatform: '',
+        futureLearningGoal: '',
+        motivationLevel: '',
+        rating: '',
+        jsonOutput: ''
+      };
+
+      this.comments = '';
+      this.platforms = [];
+      this.isSubmiTted = false;
+      this.errors = {};
     }
   }
+}
 </script>
+
 
 <style scoped>
   .r_star{
@@ -506,5 +538,32 @@
   .form_item audio {
       display: block;
       margin-top: 10px;
+  }
+
+  @media (max-width: 767px) {
+    .from_content {
+        padding: 20px;
+    }
+    .header_content_inner h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    .main_title  h4 {
+        font-size: 22px;
+        margin-bottom: 30px;
+    }
+    .header_content {
+        height: 200px;
+    }
+    .mascot_animation img {
+        width: 100px;
+        height: 100px;
+        bottom: -15px;
+        left: 20px;
+    }
+    .base_rating ul li {
+        margin-right: 5px;
+        margin-bottom: 5px;
+    }
   }
 </style>
